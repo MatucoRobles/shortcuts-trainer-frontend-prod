@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/*
+ * Convención del proyecto: dark como base, light como override.
+ * Sin clase en `<html>` → modo oscuro (default).
+ * Con clase `.light` en `<html>` → activa las clases `light:foo`.
+ * La clase la gestiona `useThemeStore` y el script anti-FOUC
+ * en `index.html`.
+ */
+@custom-variant light (&:where(.light, .light *));
+
+/* Fondo base en <html> para que el glow fijo (ToolGlow, z-[-1]) se vea
+ * a través de los <main> transparentes. slate-950 / slate-50. */
+html {
+  background-color: #020617;
+}
+html.light {
+  background-color: #f8fafc;
+}
+
+/* Foco visible para teclado en todo lo interactivo (Tailwind v4 no lo trae). */
+:where(a, button, [role="button"], input, select, textarea, summary):focus-visible {
+  outline: 2px solid #38bdf8; /* sky-400 */
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+.light :where(a, button, [role="button"], input, select, textarea, summary):focus-visible {
+  outline-color: #0284c7; /* sky-600: más contraste sobre fondo claro */
+}
+
+/* Transición suave (crossfade) al cambiar de tema vía View Transitions API. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

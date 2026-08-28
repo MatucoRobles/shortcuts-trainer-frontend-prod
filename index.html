@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Shortcuts Trainer · Keyboard Shortcuts</title>
+    <meta
+      name="description"
+      content="Learn and master keyboard shortcuts for VS Code, Chrome, and Windows with active practice and smart review."
+    />
+    <meta name="theme-color" content="#020617" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph / link previews (WhatsApp, Discord, Twitter...) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shortcuts Trainer · Keyboard Shortcuts" />
+    <meta
+      property="og:description"
+      content="Learn and master keyboard shortcuts for VS Code, Chrome, and Windows with active practice and smart review."
+    />
+    <meta property="og:url" content="https://matucorobles.github.io/PROY_2-SHROTCUTS-TRAINER/" />
+    <meta property="og:image" content="https://matucorobles.github.io/PROY_2-SHROTCUTS-TRAINER/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shortcuts Trainer · Keyboard Shortcuts" />
+    <meta
+      name="twitter:description"
+      content="Learn and master keyboard shortcuts for VS Code, Chrome, and Windows with active practice and smart review."
+    />
+    <meta name="twitter:image" content="https://matucorobles.github.io/PROY_2-SHROTCUTS-TRAINER/og-image.png" />
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          var raw = localStorage.getItem('shortcuts-trainer-theme-storage');
+          var mode = 'dark';
+          if (raw) {
+            try { mode = JSON.parse(raw).state.mode || 'dark'; } catch (e) {}
+          }
+          if (mode === 'light') document.documentElement.classList.add('light');
+        } catch (e) {}
+        try {
+          var langRaw = localStorage.getItem('shortcuts-trainer-language-storage');
+          if (langRaw) {
+            var lang = JSON.parse(langRaw).state.language;
+            if (lang) document.documentElement.lang = lang;
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
