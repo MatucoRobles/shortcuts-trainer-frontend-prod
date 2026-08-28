@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router';
 import { Layers, ArrowRight, BarChart2, Eye } from 'lucide-react';
 import { useShortcutStore } from '../useShortcutStore';
@@ -62,6 +63,10 @@ function ToolTile({ card, count }: ToolTileProps) {
  * de atajos cambia (selector granular de Zustand).
  */
 export function TrainerHome() {
+  useEffect(() => {
+    useShortcutStore.getState().fetchShortcuts();
+  }, []);
+
   const { t } = useTranslation();
   const shortcuts = useShortcutStore((s) => s.shortcuts);
 
